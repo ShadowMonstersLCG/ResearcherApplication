@@ -56,7 +56,7 @@
         </asp:CheckBoxList>
        
     </div></td> </tr>
-        <tr><td colspan="2"><br /><asp:Button Id="btnRegister" runat="server" Text="Register" CssClass="btn btn-primary" OnClick="btnRegister_Click"/>&nbsp;&nbsp;<asp:Label ID="txtError" runat="server" CssClass="alert alert-danger" /></td></tr>
+        <tr><td colspan="2"><br /><asp:Button Id="btnRegister" runat="server" Text="Register" CssClass="btn btn-primary" OnClick="btnRegister_Click"/>&nbsp;&nbsp;<asp:Label ID="txtError" runat="server" CssClass="alert alert-danger" Visible="false"/></td></tr>
     </table>
 
 </asp:Content>
