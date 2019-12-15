@@ -11,11 +11,6 @@
             <asp:GridView ID="GridView1" CssClass="table table-hover table-striped" DataKeyNames="ProjectId" runat="server" AutoGenerateColumns="false" OnRowDataBound="GridView1_RowDataBound" >
                 <Columns>
                 <asp:BoundField DataField="ProjectId" HeaderText="Project Id"/>
-                    <asp:templatefield headertext="ProjectId">
-				<itemtemplate>
-					<%# Eval("ProjectId") %>
-				</itemtemplate>
-			</asp:templatefield>
                 <asp:BoundField DataField="ProjectName" HeaderText="Project Name"/>
                 <asp:BoundField DataField="Description" HeaderText="Description"/>
                 <asp:BoundField DataField="State" HeaderText="State Code"/>
