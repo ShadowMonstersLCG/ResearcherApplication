@@ -16,6 +16,7 @@ namespace ResearcherApplication
                 this.BindExpertise();
 
                 this.txtError.Text = "";
+                this.txtError.Visible = false;
             }
         }
 
@@ -39,6 +40,7 @@ namespace ResearcherApplication
             catch(Exception ex)
             {
                 txtError.Text = ex.Message;
+                this.txtError.Visible = true;
             }
         }
     }
