@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.IO;
 using System.Text;
+using ResearcherInfoService.Models;
 
 namespace ResearcherApplication.Business
 {
@@ -66,6 +67,74 @@ namespace ResearcherApplication.Business
             }
         }
 
-        
+        internal bool SaveInformationRequested(int projectId, int researcherId, string informationRequested)
+        {
+            var requestUri = this.baseUri + "api/Project/SaveInformationRequested?researcherId=" + researcherId + "&projectId=" + projectId + "&informationRequested" + informationRequested;
+
+            var responseMessage = this.client.GetAsync(Uri.EscapeUriString(requestUri)).Result;
+            responseMessage.EnsureSuccessStatusCode();
+            var stream = responseMessage.Content.ReadAsStreamAsync().Result;
+
+            using (JsonReader jsonReader =
+                   new JsonTextReader(new System.IO.StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                //string str= serializer.Deserialize(jsonReader).ToString();
+                return serializer.Deserialize<bool>(jsonReader);
+            }
+        }
+
+        public List<ResearcherInfoService.Models.ProjectDto> GetProjects(int researcherId)
+        {
+            var requestUri = this.baseUri + "api/Project/GetProjects?researcherId=" + researcherId;
+
+            var responseMessage = this.client.GetAsync(Uri.EscapeUriString(requestUri)).Result;
+            responseMessage.EnsureSuccessStatusCode();
+            var stream = responseMessage.Content.ReadAsStreamAsync().Result;
+
+            using (JsonReader jsonReader =
+                   new JsonTextReader(new System.IO.StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+               //string str= serializer.Deserialize(jsonReader).ToString();
+                return serializer.Deserialize<List<ResearcherInfoService.Models.ProjectDto>>(jsonReader);
+            }
+        }
+
+        public bool ApplyForProject(int researcherId, int projectId)
+        {
+            var requestUri = this.baseUri + "api/Project/ApplyForProject?researcherId=" + researcherId + "&projectId=" + projectId;
+
+            var responseMessage = this.client.GetAsync(Uri.EscapeUriString(requestUri)).Result;
+            responseMessage.EnsureSuccessStatusCode();
+            var stream = responseMessage.Content.ReadAsStreamAsync().Result;
+
+            using (JsonReader jsonReader =
+                   new JsonTextReader(new System.IO.StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                //string str= serializer.Deserialize(jsonReader).ToString();
+                return serializer.Deserialize<bool>(jsonReader);
+            }
+        }
+
+        public ProjectDto GetProjectById(int projectId, int researcherId)
+        {
+            var requestUri = this.baseUri + "api/Project/GetProjectById?researcherId=" + researcherId + "&projectId=" + projectId;
+
+            var responseMessage = this.client.GetAsync(Uri.EscapeUriString(requestUri)).Result;
+            responseMessage.EnsureSuccessStatusCode();
+            var stream = responseMessage.Content.ReadAsStreamAsync().Result;
+
+            using (JsonReader jsonReader =
+                   new JsonTextReader(new System.IO.StreamReader(stream)))
+            {
+                var serializer = new JsonSerializer();
+                //string str= serializer.Deserialize(jsonReader).ToString();
+                return serializer.Deserialize<ProjectDto>(jsonReader);
+            }
+        }
+
+
     }
 }

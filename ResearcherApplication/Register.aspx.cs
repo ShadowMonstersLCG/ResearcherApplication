@@ -35,7 +35,7 @@ namespace ResearcherApplication
                 string expertiseIdsStr = string.Join(",",cbxCheckBoxList.Items.Cast<ListItem>().Where(i => i.Selected == true).Select(i => int.Parse(i.Value)).ToArray());
                 string availableMonthsStr = string.Join(",", cbxMonths.Items.Cast<ListItem>().Where(i => i.Selected == true).Select(i => int.Parse(i.Value)).ToArray());
                 int newUserId = new Business.BusinessManager().RegisterUser(txtFirstName.Text, txtLastName.Text, txtEmail.Text, txtPassword1.Text, txtCity.Text, txtState.Text, long.Parse(txtPhoneNumber.Text), expertiseIdsStr, txtCity.Text, txtOrg.Text, availableMonthsStr);
-                Response.Redirect("ResearcherDashboard.aspx");
+                Response.Redirect("ResearcherDashboard.aspx?Id=newUserId");
             }
             catch(Exception ex)
             {
